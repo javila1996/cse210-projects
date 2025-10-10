@@ -42,3 +42,16 @@ public class Activity
         Console.WriteLine();
     }
 }
+
+
+public class Activity
+{
+    protected string _name;
+    protected string _description;
+
+    public void StartMessage()
+    {
+        Console.WriteLine($"Welcome to the {_name}!");
+        Console.WriteLine(_description);
+    }
+}
