@@ -1,5 +1,3 @@
-using System;
-
 public class EternalGoal : Goal
 {
     public EternalGoal(string name, string description, int points)
@@ -12,8 +10,13 @@ public class EternalGoal : Goal
         return GetPoints();
     }
 
-    public override string GetDetailsString()
+    public override bool IsComplete() => false;
+
+    public override string GetStatus() => "Ongoing";
+
+    public override string GetStringRepresentation()
     {
-        return $"[∞] {GetName()} ({GetDescription()})";
+        return $"EternalGoal|{GetName()}|{GetDescription()}|{GetPoints()}";
     }
 }
+

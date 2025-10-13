@@ -18,11 +18,15 @@ public abstract class Goal
     public int GetPoints() => _points;
 
     public abstract int RecordEvent();
+    public abstract string GetStatus();
+    public abstract bool IsComplete();
 
     public virtual string GetDetailsString()
     {
-        return $"[ ] {_name} ({_description})";
+        string checkbox = IsComplete() ? "[X]" : "[ ]";
+        return $"{checkbox} {_name} ({_description})";
     }
 
-    public virtual bool IsComplete() => false;
+    public abstract string GetStringRepresentation();
 }
+

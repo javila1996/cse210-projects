@@ -1,12 +1,11 @@
-using System;
-
 public class SimpleGoal : Goal
 {
-    private bool _isComplete = false;
+    private bool _isComplete;
 
     public SimpleGoal(string name, string description, int points)
         : base(name, description, points)
     {
+        _isComplete = false;
     }
 
     public override int RecordEvent()
@@ -16,18 +15,16 @@ public class SimpleGoal : Goal
             _isComplete = true;
             return GetPoints();
         }
-        else
-        {
-            Console.WriteLine("This goal is already complete!");
-            return 0;
-        }
+        return 0;
     }
 
     public override bool IsComplete() => _isComplete;
 
-    public override string GetDetailsString()
+    public override string GetStatus() => _isComplete ? "Completed" : "Incomplete";
+
+    public override string GetStringRepresentation()
     {
-        string checkbox = _isComplete ? "[X]" : "[ ]";
-        return $"{checkbox} {GetName()} ({GetDescription()})";
+        return $"SimpleGoal|{GetName()}|{GetDescription()}|{GetPoints()}|{_isComplete}";
     }
 }
+
